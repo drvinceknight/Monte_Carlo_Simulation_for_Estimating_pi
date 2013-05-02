@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 from __future__ import division
 from random import random
+from math import pi
 import matplotlib.pyplot as plt
 """
 Script to simulate rain in a square field. Counting the number of rain drops in the inscribed circle of radius equal to the length of the field. The ratio of the number of drops in the circle to the total number of drops gives $\pi$.
@@ -52,12 +53,15 @@ def rain(number_of_drops=1000, length_of_field=1, plot=True, format='pdf', dynam
         else:
             drops_out_of_circle.append(d)
         if dynamic:
-            print "Plotting drop number: %s" % k
+            print "Plotting drop number: %s" % k + 1
             plot_rain_drops(drops_in_circle, drops_out_of_circle, length_of_field, format)
         pi_estimate.append(4 * number_of_drops_in_circle / (k + 1))
     # Plot the pi estimates
     plt.figure()
     plt.scatter(range(1, number_of_drops + 1), pi_estimate)
+    max_x = plt.xlim()[1]
+    plt.hlines(pi, 0, max_x, color='black')
+    plt.xlim(0, max_x)
     plt.title("$\pi$ estimate against number of rain drops")
     plt.xlabel("Number of rain drops")
     plt.ylabel("$\pi$")
