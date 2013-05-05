@@ -34,7 +34,7 @@ def plot_rain_drops(drops_in_circle, drops_out_of_circle, length_of_field=1, for
     plt.scatter([e[0] for e in drops_out_of_circle], [e[1] for e in drops_out_of_circle], color='black', label="Drops out of circle")
     plt.legend(loc="center")
     plt.title("%s drops: %s landed in circle, estimating $\pi$ as %.4f." % (number_of_drops, number_of_drops_in_circle, 4 * number_of_drops_in_circle / number_of_drops))
-    plt.savefig("%s_darts.%s" % (number_of_drops, format))
+    plt.savefig("%s_drops.%s" % (number_of_drops, format))
 
 
 def rain(number_of_drops=1000, length_of_field=1, plot=True, format='pdf', dynamic=False):
@@ -86,7 +86,7 @@ if __name__ == "__main__":
     r = rain(number_of_drops, plot=True, format='png', dynamic=False)
     # Print to screen:
     print "----------------------"
-    print "%s darts thrown" % number_of_drops
+    print "%s drops" % number_of_drops
     print "pi estimated as:"
     print "\t%s" % (4 * r[0] / r[1])
     print "----------------------"

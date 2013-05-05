@@ -1,10 +1,6 @@
-# Estimating pi by throwing darts at a dart board.
+# Making rain fall in a field so as to estimate pi.
 
-We assume that darts are thrown at a square board with an equally likely probability of hitting all points on the board. If we count the number of darts that hit an inscribed circle we can estimate pi:
-
-> The ratio of A/B will in fact be $\pi/4$ if A is the number of darts in the circle and B is the number of darts thrown.
-
-This repo contains some code that simulates the throwing of the darts.
+This repo contains some code that simulates rain fall in a square field and counts the number of drops that fall in an inscribed circle so as to estimate pi.
 
 ## Usage
 
@@ -13,22 +9,22 @@ This repo contains some code that simulates the throwing of the darts.
 This returns:
 
     ----------------------
-    500 darts thrown
+    500 drops
     pi estimated as:
         3.112
     ----------------------
 
 *but* also outputs a plot:
 
-![500 darts thrown](500_darts.png)
+![500 drops](500_drops.png)
 
-If we throw 5000 darts we get:
+If we have 100,000 drops we get:
 
-![5000 darts thrown](5000_darts.png)
+![100,000 drops](100000_drops.png)
 
-If we throw 50000 darts we get:
+If we have 1,000,000 drops we get:
 
-![50000 darts thrown](50000_darts.png)
+![1,000,000 drops](1000000_drops.png)
 
 # License Information
 
@@ -38,3 +34,8 @@ This work is licensed under a [Creative Commons Attribution-ShareAlike 3.0](http
 * Remix: adapt the work
 
 Under the following conditions:
+
+* Attribution: You must attribute the work in the manner specified by the author or licensor (but not in any way that suggests that they endorse you or your use of the work).
+* Share Alike: If you alter, transform, or build upon this work, you may distribute the resulting work only under the same or similar license to this one.
+
+When attributing this work, please include me (but don't feel obliged to: I'd just be happy to know if anyone made use of it :) ).
