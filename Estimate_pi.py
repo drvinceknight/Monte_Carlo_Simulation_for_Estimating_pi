@@ -33,7 +33,7 @@ def plot_rain_drops(drops_in_circle, drops_out_of_circle, length_of_field=1, for
     plt.scatter([e[0] for e in drops_in_circle], [e[1] for e in drops_in_circle], color='blue', label="Drops in circle")
     plt.scatter([e[0] for e in drops_out_of_circle], [e[1] for e in drops_out_of_circle], color='black', label="Drops out of circle")
     plt.legend(loc="center")
-    plt.title("%s darts thrown: %s landed in circle, estimating $\pi$ as %.4f." % (number_of_drops, number_of_drops_in_circle, 4 * number_of_drops_in_circle / number_of_drops))
+    plt.title("%s drops: %s landed in circle, estimating $\pi$ as %.4f." % (number_of_drops, number_of_drops_in_circle, 4 * number_of_drops_in_circle / number_of_drops))
     plt.savefig("%s_darts.%s" % (number_of_drops, format))
 
 
@@ -52,10 +52,10 @@ def rain(number_of_drops=1000, length_of_field=1, plot=True, format='pdf', dynam
             number_of_drops_in_circle += 1
         else:
             drops_out_of_circle.append(d)
-        if dynamic:
-            print "Plotting drop number: %s" % k + 1
+        if dynamic:  # The dynamic option if set to True will plot every new drop (this can be used to create animations of the simulation)
+            print "Plotting drop number: %s" % (k + 1)
             plot_rain_drops(drops_in_circle, drops_out_of_circle, length_of_field, format)
-        pi_estimate.append(4 * number_of_drops_in_circle / (k + 1))
+        pi_estimate.append(4 * number_of_drops_in_circle / (k + 1))  # This updates the list with the newest estimate for pi.
     # Plot the pi estimates
     plt.figure()
     plt.scatter(range(1, number_of_drops + 1), pi_estimate)
@@ -69,18 +69,21 @@ def rain(number_of_drops=1000, length_of_field=1, plot=True, format='pdf', dynam
 
     if plot and not dynamic:
         # If the plot option is passed and matplotlib is installed this plots
+        # the final set of drops
         plot_rain_drops(drops_in_circle, drops_out_of_circle, length_of_field, format)
 
     return [number_of_drops_in_circle, number_of_drops]
 
 
 if __name__ == "__main__":
+    # Run the script from cli
     from sys import argv
     number_of_drops = 100
-    if len(argv) > 1:
+    if len(argv) > 1:  # If an argument is passed then change number of drops to be simulated.
         number_of_drops = eval(argv[1])
-    r = rain(number_of_drops, plot=True, format='pdf', dynamic=True)
-    #r = rain(number_of_drops, plot=True, format='png', dynamic=False)
+    #  Two sets of simulations (comment out the unwanted one).
+    #r = rain(number_of_drops, plot=True, format='png', dynamic=True)
+    r = rain(number_of_drops, plot=True, format='png', dynamic=False)
     # Print to screen:
     print "----------------------"
     print "%s darts thrown" % number_of_drops
